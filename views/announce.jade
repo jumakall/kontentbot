@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  div.container
+    if(msg)
+      div.message= msg
+    unless title
+      h1 Finalize announcement
+    else
+      h1= title
+    form(action="/announce" method="post")
+      table
+        tbody
+          each val, key in data
+            if val !== undefined
+              tr(class=val.class hidden=!(val.type !== "hidden" || "display" in val))
+                td
+                  label= key
+                td
+                  input(name=key
+                        type=val.type
+                        value=val.value
+                        disabled=val.disabled)
+                  if "display" in val
+                    | !{val.display(val)}
+          tr(hidden=summary)
+            td
+            td
+              input(type="submit"
+                    value="Publish"
+                    data-progress-text="Publishing").submit-animation

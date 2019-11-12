@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div.container
+    h1 New announcement
+    form(action="/announce" method="get")
+      table
+        tr
+          td
+            label(for="announce_url") URL #[span.muted (optional)]
+          td
+            input(id="announce_url"
+                  name="url"
+                  type="text"
+                  autofocus)
+        tr
+          td
+            label(for="announce_preset") Preset
+          td
+            select(id="announce_preset" name="preset")
+              option(value="0") --- none ---
+              each val, index in presets
+                option(value=index+1)= val
+        tr
+          td
+          td
+            input(type="submit"
+                  value="Continue"
+                  data-progress-text="Looking for metadata").submit-animation

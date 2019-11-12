@@ -1,0 +1,68 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+@media only screen and (min-width: 650px){
+  body {
+    padding: 50px;
+  }
+}
+
+a {
+  color: #00B7FF;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.container {
+  max-width: 40em;
+}
+
+td {
+  padding: 0 0 .8em 0;
+  vertical-align: top;
+}
+
+td > label,
+td > div {
+  margin-right: 2em;
+}
+
+td:last-child {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="password"] {
+  color: black;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+
+img,
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+select {
+  width: 70%;
+}
+
+.message {
+  background-color: #ccc;
+  border: 1px solid #777;
+  padding: 1em;
+  text-align: center;
+}
+
+.muted,
+.muted a {
+  color: gray;
+}
+
+.error {
+  color: red;
+}

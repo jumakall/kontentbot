@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= process.env.APP_NAME
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="javascripts/app.js")
+  body
+    if(authenticated)
+      if(global_message)
+        .container
+          .message= global_message
+      p
+        a(href="/") New announcement
+        |  | 
+        a(href="/authenticate/logout") Logout
+    block content

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  div.container
+    h1 Authenticate
+    -if(msg)
+      p.error= msg
+    -else
+      p.muted Unauthorized access is prohibited, all attempts to authenticate will be logged.
+    form(method="post")
+      table
+        tr
+          td
+            label(for="authenticate_password") Password
+          td
+            input(id="authenticate_password"
+                  name="password"
+                  type="password"
+                  autofocus)
+        tr
+          td
+          td
+            input(type="submit"
+                  value="Authenticate"
+                  data-progress-text="Authenticating").submit-animation

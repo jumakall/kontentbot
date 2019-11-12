@@ -1,0 +1,26 @@
+image: docker:stable
+
+stages:
+    - build
+
+variables:
+    DOCKER_HOST: tcp://docker:2375/
+    DOCKER_DRIVER: overlay2
+    CONTAINER_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH
+
+services:
+    - docker:dind
+
+Build:
+    stage: build
+    only:
+        - master
+    before_script:
+        - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    after_script:
+        - docker logout $CI_REGISTRY
+    script:
+        - docker pull $CONTAINER_IMAGE:latest || true
+        - docker build --cache-from $CONTAINER_IMAGE:latest --tag $CONTAINER_IMAGE:$CI_COMMIT_SHA --tag $CONTAINER_IMAGE:latest .
+        - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
+        - docker push $CONTAINER_IMAGE:latest

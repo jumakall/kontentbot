@@ -1,0 +1,37 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${workspaceFolder}/bin/www",
+            "env": {
+                "NODE_ENV": "development",
+                "APP_NAME": "KontentBot-Beta",
+                "JWT_SECRET": "random_characters_for_encryption",
+                "AUTH_PASS": "password_for_the_app",
+                "WEBHOOK": "https://discordapp.com/api/webhooks/xxx/xxx",
+                "GLOBAL_MESSAGE": "DEMO MODE: This instance is posting as KontentBot-Beta"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Production",
+            "program": "${workspaceFolder}/bin/www",
+            "env": {
+                "NODE_ENV": "production",
+                "APP_NAME": "KontentBot",
+                "JWT_SECRET": "random_characters_for_encryption",
+                "AUTH_PASS": "password_for_the_app",
+                "WEBHOOK": "https://discordapp.com/api/webhooks/xxx/xxx",
+                //"SENTRY_DSN": "",
+                "GLOBAL_MESSAGE": "PRODUCTION: This instance is posting as KontentBot"
+            }
+        }
+    ]
+}
