@@ -20,7 +20,7 @@ block content
             select(id="announce_preset" name="preset")
               option(value="0") --- none ---
               each val, index in presets
-                option(value=index+1)= val
+                option(value=index+1)= val.msg
         tr
           td
           td

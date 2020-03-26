@@ -11,8 +11,8 @@ const helper = require('../tools/helpers');
 
 // presets for description
 const presets = [
-  'Claim for free while supplies last.',
-  'Claim for free for a limited time.'
+  { msg: 'Claim for free for a limited time.', free: true },
+  { msg: 'Claim for free while supplies last.', free: true }
 ];
 
 // platform specific stuff
@@ -86,7 +86,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/announce', function(req, res) {
-  let description = req.query.preset !== undefined && req.query.preset !== 0 ? presets[req.query.preset-1] : undefined;
+  let preset = req.query.preset !== undefined && req.query.preset !== 0 ? presets[req.query.preset-1] : undefined;
 
   let data = {
     URL: {
@@ -102,7 +102,7 @@ router.get('/announce', function(req, res) {
     },
     Description: {
       type: 'text',
-      value: description
+      value: preset ? preset.msg : ""
     },
     Price: {
       type: 'text',
@@ -159,8 +159,13 @@ router.get('/announce', function(req, res) {
     } : undefined;
     data.Description.value = data.Description.value ? data.Description.value : resolved[2];
 
-    if (resolved[3] && resolved[4])
-      data.Price.value = resolved[3] + ' ' + resolved[4]
+    if (resolved[3] && resolved[4]) {
+      data.Price.value = resolved[3] + ' ' + resolved[4];
+
+      if (preset && preset.free)
+        data.Price.value = 'FREE ~~' + data.Price.value + '~~';
+    }
+      
 
     if ('Platform' in data && 'generator' in platforms[data.Platform.value])
       data = { ...data, ...platforms[data.Platform.value].generator(data) };
