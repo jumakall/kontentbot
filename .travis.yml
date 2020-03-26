@@ -7,8 +7,8 @@ before_script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
-    - docker build -t "$REPO" .
-    - docker push "$REPO"
+    - docker build -t "$REPO:latest" .
+    - docker push "$REPO:latest"
 
 after_script:
     - docker logout
