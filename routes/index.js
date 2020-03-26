@@ -11,9 +11,8 @@ const helper = require('../tools/helpers');
 
 // presets for description
 const presets = [
-  'Claim for free.',
   'Claim for free while supplies last.',
-  'Great deal.'
+  'Claim for free for a limited time.'
 ];
 
 // platform specific stuff
@@ -45,8 +44,8 @@ const platforms = {
     domains: [ "origin.com" ]
   },
   "Uplay": {
-    color: 16777215,
-    domains: [ "ubisoft.com" ]
+    color: 28927,
+    domains: [ "ubisoft.com", "ubi.com" ]
   },
   "GOG": {
     color: 14584549,
