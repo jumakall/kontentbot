@@ -82,7 +82,7 @@ const platforms = {
 };
 
 router.get('/', function(req, res) {
-  res.render('index', { presets: presets });
+  res.render('index', { presets: presets, url: req.query.url });
 });
 
 router.get('/announce', function(req, res) {
