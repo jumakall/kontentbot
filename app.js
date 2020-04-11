@@ -91,7 +91,7 @@ app.use(function(req, res, next) {
 
 app.use(function(req, res, next) {
   if (!req.authenticated && req.path !== "/authenticate")
-    res.redirect("/authenticate");
+    res.redirect("/authenticate" + (req.query.url ? '?url='+req.query.url : ''));
   else
     next();
 });

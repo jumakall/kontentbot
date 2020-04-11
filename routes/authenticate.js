@@ -31,7 +31,7 @@ router.post('/', function(req, res, next) {
 
     const token = jwt.sign({ authenticated: true, exp: Date.now() / 1000 + expiration }, process.env.JWT_SECRET);
     res.cookie('auth', token, cookieOptions);
-    res.redirect('/');
+    res.redirect('/' + (req.query.url ? '?url='+req.query.url : ''))
   }
   else
   {
