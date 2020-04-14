@@ -164,6 +164,8 @@ router.get('/announce', function(req, res) {
 
       if (preset && preset.free)
         data.Price.value = 'FREE ~~' + data.Price.value + '~~';
+    } else if (preset && preset.free) {
+      data.Price.value = 'FREE';
     }
       
 
