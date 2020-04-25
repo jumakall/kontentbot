@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@sentry/node": "^5.15.4",
+    "@sentry/node": "^5.15.5",
     "abort-controller": "^3.0.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
