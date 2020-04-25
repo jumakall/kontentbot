@@ -85,7 +85,12 @@ const platforms = {
   },
   "Microsoft Store": {
     color: 1080336,
-    domains: [ "microsoft.com" ]
+    domains: [ "microsoft.com" ],
+    generator: input => {
+      input.Title.value = helper.removeFromStart(input.Title.value, 'Get ');
+      input.Title.value = helper.removeFromEnd(input.Title.value, ' - Microsoft Store en-GB');
+      input.Image.value = helper.removeFromEnd(input.Image.value, '%3Fw=120&h=120&q=60');
+    }
   }
 };
 
