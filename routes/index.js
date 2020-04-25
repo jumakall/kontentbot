@@ -78,6 +78,14 @@ const platforms = {
       input.Title.value = helper.removeFromStart(input.Title.value, 'Buy ');
       input.Title.value = helper.removeFromEnd(input.Title.value, ' from the Humble Store');
     }
+  },
+  "PlayStation Store": {
+    color: 94926,
+    domains: [ "store.playstation.com", "playstation.com" ]
+  },
+  "Microsoft Store": {
+    color: 1080336,
+    domains: [ "microsoft.com" ]
   }
 };
 
